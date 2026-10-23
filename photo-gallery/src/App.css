@@ -10,7 +10,23 @@
   --ink: #41432b;
   --muted: #887858;
 }
+.invitation-grid {
+  position: relative;
+}
 
+.invitation-grid:has(.empty-message) {
+  display: grid;
+  place-items: center;
+  min-height: 300px;
+}
+
+.empty-message {
+  grid-column: 1 / -1;
+  margin: 0;
+  text-align: center;
+  color: #535629;
+  font-size: 14px;
+}
 
 .gallery-page {
   position: relative;
@@ -72,7 +88,8 @@
   column-gap: 60px;
   row-gap: 40px;
   transform: translateX(46px);
-
+  position: relative;
+  min-height: 300px;
   align-items: center;
 }
 

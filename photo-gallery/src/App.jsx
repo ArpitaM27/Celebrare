@@ -1,4 +1,4 @@
-import { useReducer,useEffect } from 'react'
+import { useReducer,useEffect,useState,useCallback,useMemo } from 'react'
 import './App.css'
 import left from './assets/left.png'
 import right from './assets/right.png'
@@ -69,6 +69,15 @@ function InvitationCard({ author, photoId, isFavourite, onToggle })  {
 
 export default function App() {
     const { photos, loading, error } = useFetchPhotos();
+    const [search, setSearch] = useState('')
+    const handleSearch = useCallback((event) => {
+      setSearch(event.target.value)
+    }, [])
+    const filteredPhotos = useMemo(() => {
+      return photos.filter((photo) =>
+        photo.author.toLowerCase().includes(search.trim().toLowerCase())
+      )
+    }, [photos, search])
     const [favourites, dispatch] = useReducer(
         favouritesReducer,
         [],
@@ -154,6 +163,8 @@ export default function App() {
       <div className="mx-auto max-w-md">
         <input
           type="search"
+          value={search}
+          onChange={handleSearch}
           placeholder="Search memories by author..."
           aria-label="Search memories by author"
           className="w-full rounded-full border border-[#dce5ce] bg-[#fffdf7] px-5 py-3 text-sm text-[#41432b] outline-none transition-all duration-300 placeholder:text-[#a0a18b] focus:border-[#7d9460] focus:shadow-[0_0_16px_rgba(125,148,96,0.25)]"
@@ -161,7 +172,7 @@ export default function App() {
       </div>
     </header>
       <section className="invitation-grid">
-              {photos.map((photo) => (
+              {filteredPhotos.map((photo) => (
           <InvitationCard
             key={photo.id}
             author={photo.author}
@@ -175,6 +186,11 @@ export default function App() {
             }}
           />
         ))}
+        {filteredPhotos.length === 0 && (
+           <p className="empty message">
+            No memories found. Please try another author.
+          </p>
+        )}
       </section>
     </main>
   )
