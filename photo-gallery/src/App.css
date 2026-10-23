@@ -34,6 +34,32 @@
   font-size: 22px;
 }
 
+.gallery-page header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 12px;
+}
+
+.gallery-page header h1,
+.gallery-page header .mobile-gallery-title {
+  margin-top: 0;
+  margin-bottom: 2px;
+}
+
+.gallery-page header input {
+  width: 520px;
+  max-width: 140%;
+  height: 56px;
+  margin-top: 0;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+.mobile-gallery-title {
+  margin-bottom: 4px;
+}
+
 .gallery-page {
   position: relative;
   isolation: isolate;
@@ -610,4 +636,6 @@
   height: auto;
   overflow-y: visible;
 }
+
+
 
