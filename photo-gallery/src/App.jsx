@@ -144,10 +144,10 @@ export default function App() {
         src={left}
         alt=""
         aria-hidden="true"
-        className="h-20 w-20 shrink-0 object-contain sm:h-24 sm:w-24"
+        className="heading-leaf h-20 w-20 shrink-0 object-contain sm:h-24 sm:w-24"
       />
 
-      <h1 className="mb-4 font-serif text-8xl font-normal text-[#41432b] md:text-7xl">
+      <h1 className="mobile-gallery-title mb-4 font-serif text-8xl font-normal text-[#41432b] ">
         Moments in Bloom
       </h1>
 
@@ -155,7 +155,7 @@ export default function App() {
         src={right}
         alt=""
         aria-hidden="true"
-        className="h-20 w-20 shrink-0 object-contain sm:h-24 sm:w-24"
+        className="heading-leaf h-20 w-20 shrink-0 object-contain sm:h-24 sm:w-24"
       />
       </div>
 

@@ -13,6 +13,12 @@
 .invitation-grid {
   position: relative;
 }
+.heading-leaf {
+    display: block;
+    width: 220px;
+    height: 260px;
+    object-fit: contain;
+  }
 
 .invitation-grid:has(.empty-message) {
   display: grid;
@@ -25,7 +31,7 @@
   margin: 0;
   text-align: center;
   color: #535629;
-  font-size: 14px;
+  font-size: 22px;
 }
 
 .gallery-page {
@@ -80,17 +86,20 @@
   grid-template-columns: repeat(4, minmax(0, 1fr));
 
   width: 100%;
+  max-width: 1600px;
   margin: 30px auto 0;
-  margin-top: -55px;
-  padding-bottom: 60px;
-  overflow: visible;
+  padding: 0 20px 60px;
 
-  column-gap: 60px;
+  column-gap: 24px;
   row-gap: 40px;
-  transform: translateX(46px);
+
+  justify-items: center;
+  align-items: start;
+
   position: relative;
-  min-height: 300px;
-  align-items: center;
+  overflow: visible;
+  transform: none;
+  box-sizing: border-box;
 }
 
 .card-scene {
@@ -102,7 +111,8 @@
   min-width: 0;
   aspect-ratio: 0.72;
 
-  margin: 0 auto;
+  margin-inline: auto;
+  box-sizing: border-box;
 }
 
 
@@ -351,69 +361,253 @@
 }
 
 
-@media (max-width: 1000px) {
+@media (min-width: 561px) and (max-width: 1032px) {
   .gallery-page {
+    box-sizing: border-box;
     width: 95%;
-    padding: 30px 28px 44px;
+    margin: 20px auto;
+    padding: 32px 24px 48px;
   }
 
   .invitation-grid,
   .gallery {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: 24px;
-    row-gap: 32px;
+    row-gap: 36px;
+    width: 100%;
+    margin: 24px auto 0;
+    padding: 0 8px 48px;
+    transform: none;
   }
 
   .card-scene {
     width: 100%;
     max-width: 320px;
+    margin-inline: auto;
+  }
+
+  .envelope {
+    left: -24%;
+    width: 100%;
+  }
+
+  .invitation-card {
+    left: 17%;
+    width: 90%;
+  }
+
+  .invitation-name {
+    font-size: clamp(18px, 2.4vw, 24px);
+  }
+    .heading-leaf {
+    display: block;
+    width: 150px;
+    height: 180px;
+    object-fit: contain;
   }
 }
 
-@media (max-width: 560px) {
-  .gallery-page {
-    width: calc(100% - 20px);
-    min-height: calc(100vh - 20px);
+@media (min-width: 1040px) and (max-width: 1500px) {
+  .invitation-grid,
+  .gallery {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: 40px;
+    row-gap: 100px;
 
-    margin: 10px auto;
-    padding: 24px 18px 32px;
+    width: 100%;
+    max-width: 1600px;
+    margin: 30px auto 0;
+    padding: 0 24px 100px;
 
-    border-radius: 20px;
+    justify-items: center;
+    align-items: start;
+    transform: none;
+    overflow: visible;
+  }
+  .heading-leaf {
+  display: block;
+}
+
+  .invitation-favourite {
+    width: 40px;
+    height: 40px;
+    font-size: 27px;
+    right: 4%;
+    bottom: 25% !important;
+  }
+  
+
+
+  .envelope {
+    top: 10%;
+    left: -24%;
+    width: 100%;
+    height: 98%;
   }
 
-  .gallery-page::before {
-    inset: 7px;
-    border-radius: 14px;
+
+  .invitation-photo {
+    flex-shrink: 0;
+  }
+
+  .card-scene {
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 0.62;
+  margin: 0;
+  overflow: visible;
+}
+
+.invitation-card {
+  top: 8%;
+  left: 7%;
+  width: 90%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.invitation-inner {
+  overflow: hidden;
+  padding: 7% 7% 12%;
+}
+
+.invitation-name {
+  display: block;
+  flex-shrink: 0;
+  margin: 12px 0 8px;
+  font-size: clamp(17px, 1.4vw, 22px);
+  line-height: 1.2;
+}
+
+  .invitation-favourite {
+    bottom: 6%;
+  }
+}
+@media (max-width: 560px) {
+  .gallery-page {
+    box-sizing: border-box;
+    width: calc(100% - 16px);
+    max-width: 100%;
+    min-height: 100vh;
+    margin: 8px auto;
+    padding: 24px 12px 32px;
+    overflow-x: clip;
+    border-radius: 18px;
+  }
+
+  .gallery-page header {
+    width: 100%;
+    min-width: 0;
+    padding: 16px 0 0;
+    margin-bottom: 32px;
+  }
+
+  .mobile-gallery-title {
+    width: 100%;
+    max-width: 100%;
+    font-size: 52px !important;
+    line-height: 1.1;
+    text-align: center;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  .heading-leaf {
+    display: none;
+  }
+
+  .gallery-page header input {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
   }
 
   .invitation-grid,
   .gallery {
-    grid-template-columns: 1fr;
-    gap: 24px;
-
-    margin-top: 24px;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    width: 100%;
+    min-width: 0;
+    gap: 28px;
+    margin: 20px auto 0;
+    padding: 0 0 32px;
+    transform: none;
   }
 
   .card-scene {
-    width: min(100%, 320px);
+    width: 100%;
+    max-width: 245px;
+    min-width: 0;
+    aspect-ratio: 0.62;
+    margin-inline: auto;
   }
 
-  .invitation-name {
-    font-size: 25px;
+ 
+  .invitation-card {
+    box-sizing: border-box;
+    top: 2%;
+    left: 17%;
+    width: 90%;
+    height: 96%;
+    padding: 4px;
+  }
+
+  .invitation-inner {
+    box-sizing: border-box;
+    padding: 7% 7% 8%;
   }
 
   .invitation-label {
+    margin: 4px 0 9px;
     font-size: 7px;
-    letter-spacing: 0.13em;
+    letter-spacing: 0.12em;
+  }
+
+  .invitation-photo {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    flex-shrink: 0;
+  }
+
+  .invitation-name {
+    margin-top: 10px;
+    font-size: 18px !important;
+    line-height: 1.2;
+  }
+
+  .envelope {
+  display: block;
+  top: 3%;
+  left: -24%;
+  width: 90%;
+  height: 94%;
+}
+
+
+  .invitation-favourite {
+    right: 4%;
+    bottom: 6%;
+    width: 32px;
+    height: 32px;
+    font-size: 26px;
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    scroll-behavior: auto !important;
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
-  }
+
+
+.card-scene {
+  min-height: 0;
+  overflow: visible;
 }
+
+.invitation-grid,
+.gallery {
+  overflow: visible;
+}
+
+.gallery-page {
+  height: auto;
+  overflow-y: visible;
+}
+
