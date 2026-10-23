@@ -1,8 +1,20 @@
-
+import { useReducer,useEffect } from 'react'
 import './App.css'
 import useFetchPhotos from './hooks/useFetchPhotos'
 import weddingEnvelope from './assets/wedding-envelope.png'
+function favouritesReducer(state, action) {
+  switch (action.type) {
+    case 'TOGGLE_FAV':
+      if (state.includes(action.id)) {
+        return state.filter((id) => id !== action.id)
+      }
 
+      return [...state, action.id]
+
+    default:
+      return state
+  }
+}
 function Envelope() {
   return (
     <div className="envelope transition-transform duration-500 ease-out group-hover:translate-x-1 group-hover:translate-y-1">
@@ -15,9 +27,9 @@ function Envelope() {
   )
 }
 
-function InvitationCard({ author , photoId }) {
+function InvitationCard({ author, photoId, isFavourite, onToggle })  {
   return (
-    <div className="card-scene">
+    <div className="card-scene group">
       <Envelope />
 
       <article className="invitation-card transition-all duration-500 ease-out group-hover:-translate-y-1 group-hover:shadow-[0_14px_32px_rgba(133,160,104,0.28)]">
@@ -38,25 +50,43 @@ function InvitationCard({ author , photoId }) {
             A little piece of forever
           </p>
 
-          <button
-            className="invitation-favourite"
-            type="button"
-            aria-label={`Favourite ${author}`}
-          >
-            ♡
-          </button>
+                <button
+          className="invitation-favourite"
+          type="button"
+          aria-label={
+            isFavourite
+              ? `Remove ${author} from favourites`
+              : `Add ${author} to favourites`
+          }
+          aria-pressed={isFavourite}
+          onClick={onToggle}
+        >
+          {isFavourite ? '♥' : '♡'}
+        </button>
+   
         </div>
       </article>
     </div>
   )
 }
-const cards = Array.from({ length: 30 }, (_, index) => ({
-  id: index + 1,
-  author: `Memory ${index + 1}`,
-}))
+
 export default function App() {
     const { photos, loading, error } = useFetchPhotos();
+    const [favourites, dispatch] = useReducer(
+        favouritesReducer,
+        [],
+        () => {
+          try {
+            return JSON.parse(localStorage.getItem('favourites')) ?? []
+          } catch {
+            return []
+          }
+        }
+      )
 
+      useEffect(() => {
+        localStorage.setItem('favourites', JSON.stringify(favourites))
+      }, [favourites])
    
     if (loading) {
       return (
@@ -100,12 +130,18 @@ export default function App() {
   return (
     <main className="gallery-page">
       <section className="invitation-grid">
-       {photos.map((photo) => (
+              {photos.map((photo) => (
           <InvitationCard
             key={photo.id}
             author={photo.author}
             photoId={photo.id}
-
+            isFavourite={favourites.includes(photo.id)}
+            onToggle={() => {
+              dispatch({
+                type: 'TOGGLE_FAV',
+                id: photo.id,
+              })
+            }}
           />
         ))}
       </section>

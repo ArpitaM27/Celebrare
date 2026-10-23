@@ -5,6 +5,7 @@ export default function useFetchPhotos() {
   const [photos, setPhotos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+ 
 
   useEffect(() => {
     const startTime = Date.now();
