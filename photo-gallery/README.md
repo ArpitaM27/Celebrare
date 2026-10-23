@@ -1,16 +1,35 @@
-# React + Vite
+Moments in Bloom
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A vintage-inspired photo gallery that transforms everyday moments into keepsakes.
 
-Currently, two official plugins are available:
+✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Dynamic Photo Gallery — Fetches photos from the Picsum Photos API.
+- Author Search — Search memories by author name.
+- Favourites— Toggle favourite photos with a heart button.
+- Persistent Storage — Preserves favourites across page refreshes using `localStorage`.
+- Responsive Design — Optimized for desktop, tablet, and mobile screens.
+- Elegant UI — Botanical accents, warm ivory tones, olive details, and subtle interactions.
+- Loading & Error States — Provides feedback while fetching photos and when requests fail.
 
-## React Compiler
+ 🛠️ Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React + Vite
+- JavaScript
+- Tailwind CSS
+- Custom CSS
+- Picsum Photos API
 
-## Expanding the ESLint configuration
+React Hooks: `useEffect`, `useMemo`, `useCallback`, `useReducer`
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+ 🔌 API
+
+Photos are fetched from the [Picsum Photos API](https://picsum.photos/v2/list?limit=30).
+
+ 🎨 Design Inspiration
+
+The visual concept and invitation-inspired aesthetic draw inspiration from the official Celebrare website, reimagined as an interactive photo gallery with a botanical theme.
+
+---
+
+Made with React, inspired by meaningful moments. 🌱
