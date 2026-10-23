@@ -1,5 +1,7 @@
 import { useReducer,useEffect } from 'react'
 import './App.css'
+import left from './assets/left.png'
+import right from './assets/right.png'
 import useFetchPhotos from './hooks/useFetchPhotos'
 import weddingEnvelope from './assets/wedding-envelope.png'
 function favouritesReducer(state, action) {
@@ -17,7 +19,7 @@ function favouritesReducer(state, action) {
 }
 function Envelope() {
   return (
-    <div className="envelope transition-transform duration-500 ease-out group-hover:translate-x-1 group-hover:translate-y-1">
+    <div className="envelope">
       <img
         src={weddingEnvelope}
         alt=""
@@ -32,10 +34,9 @@ function InvitationCard({ author, photoId, isFavourite, onToggle })  {
     <div className="card-scene group">
       <Envelope />
 
-      <article className="invitation-card transition-all duration-500 ease-out group-hover:-translate-y-1 group-hover:shadow-[0_14px_32px_rgba(133,160,104,0.28)]">
-        
-        <div className="invitation-inner transition-colors duration-500 group-hover:bg-[#f3f6e9]">
-          <p className="invitation-label">A MOMENT TO REMEMBER</p>
+<article className="invitation-card transition-[transform,box-shadow] duration-500 ease-out hover:-translate-y-1 hover:!shadow-[0_8px_28px_4px_rgba(92,145,65,0.60)]">
+  <div className="invitation-inner ">
+            <p className="invitation-label font-bold !text-[10px] !text-[#B8860B]">A MOMENT TO REMEMBER</p>
 
           <div className="invitation-photo">
             <img
@@ -44,11 +45,7 @@ function InvitationCard({ author, photoId, isFavourite, onToggle })  {
             />
           </div>
 
-          <h2 className="invitation-name">{author}</h2>
-
-          <p className="invitation-caption">
-            A little piece of forever
-          </p>
+          <h2 className="invitation-name !text-base !font-bold text-[#556B2F] ">{author}</h2>
 
                 <button
           className="invitation-favourite"
@@ -129,6 +126,40 @@ export default function App() {
     }
   return (
     <main className="gallery-page">
+      <header className="mb-12 px-6 pt-12 text-center">
+      <p className="mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-[#7d8c4b]">
+        LITTLE THINGS, LASTING MEMORIES
+      </p>
+     <div className="mb-4 flex items-center justify-center gap-4">
+      <img
+        src={left}
+        alt=""
+        aria-hidden="true"
+        className="h-20 w-20 shrink-0 object-contain sm:h-24 sm:w-24"
+      />
+
+      <h1 className="mb-4 font-serif text-8xl font-normal text-[#41432b] md:text-7xl">
+        Moments in Bloom
+      </h1>
+
+       <img
+        src={right}
+        alt=""
+        aria-hidden="true"
+        className="h-20 w-20 shrink-0 object-contain sm:h-24 sm:w-24"
+      />
+      </div>
+
+     
+      <div className="mx-auto max-w-md">
+        <input
+          type="search"
+          placeholder="Search memories by author..."
+          aria-label="Search memories by author"
+          className="w-full rounded-full border border-[#dce5ce] bg-[#fffdf7] px-5 py-3 text-sm text-[#41432b] outline-none transition-all duration-300 placeholder:text-[#a0a18b] focus:border-[#7d9460] focus:shadow-[0_0_16px_rgba(125,148,96,0.25)]"
+        />
+      </div>
+    </header>
       <section className="invitation-grid">
               {photos.map((photo) => (
           <InvitationCard

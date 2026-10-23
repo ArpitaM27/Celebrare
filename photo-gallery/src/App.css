@@ -19,8 +19,9 @@
 
   width: 94%;
   max-width: 2000px;
-  min-height: calc(100vh - 64px);
+  min-height: 100vh;
   margin: 32px auto;
+  overflow-x: hidden;
   padding: 36px clamp(20px, 5%, 76px) 60px;
 
   background:
@@ -63,8 +64,10 @@
   grid-template-columns: repeat(4, minmax(0, 1fr));
 
   width: 100%;
-  max-width: none;
   margin: 30px auto 0;
+  margin-top: -55px;
+  padding-bottom: 60px;
+  overflow: visible;
 
   column-gap: 60px;
   row-gap: 40px;
@@ -268,14 +271,14 @@
   position: absolute;
   z-index: 6;
 
-  right: 8%;
-  bottom: 5%;
+  right: 5%;
+  bottom: 10%;
 
   display: grid;
   place-items: center;
 
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   padding: 0;
 
   border: 1px solid var(--gold);
@@ -284,7 +287,7 @@
   background: #fffaf1;
   color: #9b6236;
 
-  font-size: 23px;
+  font-size: 33px;
   line-height: 1;
 
   cursor: pointer;
@@ -295,18 +298,12 @@
     color 180ms ease;
 }
 
-.invitation-favourite:hover {
-  background: #ead9ca;
-  color: #7b3437;
-  transform: scale(1.08);
-}
 
 .invitation-favourite:focus-visible {
   outline: 2px solid var(--olive);
   outline-offset: 3px;
 }
 
-/* ===== CARD DIVIDER ===== */
 
 .invitation-divider {
   display: flex;
@@ -327,7 +324,6 @@
   background: #b7a071;
 }
 
-/* ===== CARD ORNAMENT ===== */
 
 .invitation-ornament {
   margin-top: auto;
@@ -337,7 +333,6 @@
   font-size: 12px;
 }
 
-/* ===== TABLET ===== */
 
 @media (max-width: 1000px) {
   .gallery-page {
@@ -357,8 +352,6 @@
     max-width: 320px;
   }
 }
-
-/* ===== MOBILE ===== */
 
 @media (max-width: 560px) {
   .gallery-page {
@@ -397,8 +390,6 @@
     letter-spacing: 0.13em;
   }
 }
-
-/* ===== ACCESSIBILITY ===== */
 
 @media (prefers-reduced-motion: reduce) {
   *,
